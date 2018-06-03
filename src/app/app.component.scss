@@ -22,8 +22,59 @@
     filter: alpha(opacity=20);
   }
 
+  .bag-container {
+    float: left;
+    width: 200px;
+    height: 100%;
+    margin: 10px 10px;
+  }
+  .persons {
+    float: right;
+    width: 250px;
+  }
+  .drag-element {
+    cursor: move;
+    padding:.5em;
+    font-weight:bold;
+    font-size: 1.1rem;
+    margin: 1em 0  0 0;
+  }
+  .drag-element input {
+    background-color: inherit;
+    border:0;
+    color: inherit;
+    height: 1rem;
+    margin-bottom: 1px;
+    font-size: 1.1rem;
+    font-family: inherit;
+  }
+  .drag-element .input-field {
+    margin-top: 0px;
+  }
+
+  .bag-container .row {
+    margin-bottom: 0px;
+  }
+  .bag-container .bag {
+    min-height: 50px;
+  }
+  
+  .handler {
+    cursor: move;
+    padding-top: 0px;
+  }
+.card-title input {
+  font-size: 1.5rem;
+  font-weight:bold;
+  font-family: 'Raleway', 'Arial';
+}
+
+.bag-container-footer {
+
+  padding: 1em 0em 0em 0em;
+}
 /*CSS*/
-  .container {
+/*   .container {
     display: grid;
     grid-template-columns: 50% auto;
   }
@@ -46,13 +97,13 @@
     width: 200px;
     height: 100%;
     margin: 1em;
+    box-shadow: 0 6px 6px -3px rgba(0,0,0,.2), 0 10px 14px 1px rgba(0,0,0,.14), 0 4px 18px 3px rgba(0,0,0,.12);
     
   }
 
   .persons {
     float: right;
     width: 250px;
-    min-height: 400px;
   }
 
   .bag-container-title {
@@ -61,11 +112,17 @@
     text-align: center;
     padding: 1em 0em;
   }
+  .bag-container-title input {
+    background-color: inherit;
+    border:0;
+    color: inherit;
+  }
 
   .bag {
       background:rgb(10, 112, 180);
       padding: 10px;
-  }
+      }
+
   .bag-container-footer {
     width: 100%;
     font-weight: bold;
@@ -79,6 +136,13 @@
     font-weight:bold;
     cursor:pointer;
     margin: 1em 0  0 0;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 5px 8px 0 rgba(0,0,0,.14), 0 1px 14px 0 rgba(0,0,0,.12);  
+}
+
+.drag-element input {
+  background-color: inherit;
+  border:0;
+  color: inherit;
 }
 
 input {
@@ -91,14 +155,14 @@ input.txt {
   border: 0;
   padding: 1em 0.5em;
   width: 50%;
-  /* margin-bottom: 2em; */
+
 }
 input.btn {
   border: 0;
- /*  display:block; */
+
   padding:1em 1em;
   background:#A5F883;
   color:#003A61;
   margin-bottom:0.5em;
   cursor:pointer;
-}
+} */

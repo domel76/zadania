@@ -1,39 +1,94 @@
-<div class="bag-container persons">
-  <div class="bag-container-title color-darker">Osoby</div>
-  <div [dragula]='"bag-one"' [dragulaOptions]="options" class="bag" [dragulaModel]='zadania.zasoby'>
-    <div *ngFor="let item of zadania.zasoby" class="drag-element" [innerHtml]='item'></div>
-  </div>
-  <div class="bag-container-footer color-darker">
-    <form>
-      <input type="text" class="txt" name="item" placeholder="Nazwa" [(ngModel)]="nazwaZasobu">
-      <input type="submit" class="btn" value="Dodaj" (click)="addZasob()">
-    </form>
-  </div>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper green">
+      <ul id="nav-mobile" class="center hide-on-med-and-down">
+        <li>
+          <input type="text" class="datepicker">
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons left">save</i>
+            Zapisz
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons left">cloud_download</i>Otwórz
+          </a>
+        </li>
+      </ul>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+
+        <li>
+          <a href="#" (click)="addZasob()">
+            <i class="material-icons">person_add</i>
+          </a>
+        </li>
+        <li>
+          <a href="#" (click)="addProjekt()">
+            <i class="material-icons">playlist_add_check</i>
+          </a>
+        </li>
+
+        <li>
+          <a href="badges.html"></a>
+        </li>
+        <li>
+          <a href="collapsible.html"></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </div>
 
-<div class="bag-container" *ngFor="let bag of zadania.bags; let i = index">
-  <div class="bag-container-title color-darker">{{bag.nazwa}}</div>
-  <div [dragula]='"bag-one"' [dragulaOptions]="options" class="bag" [dragulaModel]='bag.osoby'>
-    <div *ngFor="let item of bag.osoby" class="drag-element" [innerHtml]='item'></div>
+
+<div class="containe_disabled">
+
+  <div class="card green darken-3 bag-container persons z-depth-3">
+    <div class="card-content white-text">
+      <div class="card-title">Osoby</div>
+      <div [dragula]='"bag-one"' [dragulaOptions]="options" class="bag" [dragulaModel]='zadania.zasoby'>
+        <div *ngFor="let item of zadania.zasoby" class="drag-element white-text green lighten-2 z-depth-3">
+          <div class="row">
+            <div class="col s2 handler" style="cursor: move;">
+              :::
+            </div>
+            <div class="input-field col s10">
+              <input placeholder="Nazwa osoby" type="text" class="" [(ngModel)]="item.nazwa">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bag-container-footer color-darker">
+        <a class="btn-floating btn-large waves-effect waves-light green accent-4" (click)="addZasob()">
+          <i class="material-icons">person_add</i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card green darken-3 bag-container persons z-depth-3" *ngFor="let bag of zadania.bags; let i = index">
+    <div class="card-content white-text">
+      <div class="card-title">
+        <input type="text" [(ngModel)]="bag.nazwa" placeholder="Nazwa zadania">
+      </div>
+      <div class="row">
+        <div [dragula]='"bag-one"' [dragulaOptions]="options" class="bag" [dragulaModel]='bag.osoby'>
+          <div *ngFor="let item of bag.osoby" class="drag-element white-text green lighten-2 z-depth-3" [innerHtml]='item.nazwa'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card green darken-3 bag-container persons z-depth-3">
+    <div class="card-content white-text">
+      <div class="card-title">
+        Debug
+      </div>
+      <div>
+        <pre>zadania: {{zadania | json}}</pre> </div>
+    </div>
   </div>
 </div>
-
-
-<div class="bag-container">
-  <div class="bag-container-title color-darker">Debug</div>
-  <div class="bag">
-    <pre>zadania: {{zadania | json}}</pre>
-  </div>
-</div>
-<!-- <div [dragula]='"bag-one"' [dragulaOptions]="options">
-  <div>11111</div>
-  <div>22222</div>
-  <div>33333</div>
-</div>
-<div [dragula]='"bag-one"' [dragulaOptions]="options">
-  <div>AAAAAA</div>
-  <div>BBBBBB</div>
-  <div>CCCCCC</div>
-</div>
- -->
 <router-outlet></router-outlet>

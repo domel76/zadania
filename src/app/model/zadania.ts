@@ -1,10 +1,10 @@
 export class Zadania {
     data: string;
-    zasoby: [string];
+    zasoby: [{ id: string, nazwa: string }];
     bags: [
         {
             nazwa: string;
-            osoby: [string]
+            osoby: [{ id: string, nazwa: string }]
         }
     ];
 }
