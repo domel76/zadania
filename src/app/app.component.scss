@@ -1,0 +1,104 @@
+/*DRAGULA*/
+.gu-mirror {
+    position: fixed !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+  }
+  .gu-hide {
+    display: none !important;
+  }
+  .gu-unselectable {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+  }
+  .gu-transit {
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: alpha(opacity=20);
+  }
+
+/*CSS*/
+  .container {
+    display: grid;
+    grid-template-columns: 50% auto;
+  }
+  .col {
+      padding: .4em 1.3em;
+  }
+  .color-dark {
+      background: #2885C4;
+  }
+  .color-darker {
+    background: rgb(9, 83, 133);
+}
+  .color-light {
+      background: #57B3F1;
+  }
+  
+ 
+  .bag-container {
+    float: left;
+    width: 200px;
+    height: 100%;
+    margin: 1em;
+    
+  }
+
+  .persons {
+    float: right;
+    width: 250px;
+    min-height: 400px;
+  }
+
+  .bag-container-title {
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    padding: 1em 0em;
+  }
+
+  .bag {
+      background:rgb(10, 112, 180);
+      padding: 10px;
+  }
+  .bag-container-footer {
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    padding: 1em 0em;
+  }
+  
+  .drag-element{
+    background:rgb(89, 172, 228);
+    padding:.5em;
+    font-weight:bold;
+    cursor:pointer;
+    margin: 1em 0  0 0;
+}
+
+input {
+  font-family: 'Raleway', 'Arial';    
+  font-weight: bold;
+  font-size: 1em;
+}
+
+input.txt {
+  border: 0;
+  padding: 1em 0.5em;
+  width: 50%;
+  /* margin-bottom: 2em; */
+}
+input.btn {
+  border: 0;
+ /*  display:block; */
+  padding:1em 1em;
+  background:#A5F883;
+  color:#003A61;
+  margin-bottom:0.5em;
+  cursor:pointer;
+}
