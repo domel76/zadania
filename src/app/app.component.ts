@@ -11,7 +11,7 @@ declare var M: any;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
+  debug = false;
   title = 'app';
   nazwaZasobu;
   zadania = {
