@@ -1,18 +1,29 @@
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper green">
-      <ul id="nav-mobile" class="center hide-on-med-and-down">
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li>
-          <input type="text" class="datepicker">
+          <input type="text" [(ngModel)]="zadania.data" class="datazadania" />
+          <span class="dzientygodnia">{{ zadania.data | date:'EEEE':'+2':'pl'}}</span>
         </li>
         <li>
-          <a href="#">
+          <a href="#" (click)="odejmijDzien()" class="tooltipped" data-position="bottom" data-tooltip="Ustaw dzień wcześniej">
+            <i class="material-icons">remove</i>
+          </a>
+        </li>
+        <li>
+          <a href="#" (click)="dodajDzien()" class="tooltipped" data-position="bottom" data-tooltip="Ustaw dzień później">
+            <i class="material-icons">add</i>
+          </a>
+        </li>
+        <li>
+          <a href="#" (click)="zapiszZadania()" class="tooltipped" data-position="bottom" data-tooltip="Zapisz dane na dany dzień">
             <i class="material-icons left">save</i>
             Zapisz
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="#" (click)="otworzZadania()" class="tooltipped" data-position="bottom" data-tooltip="Pobierz dane z danego dnia">
             <i class="material-icons left">cloud_download</i>Otwórz
           </a>
         </li>
@@ -21,12 +32,12 @@
 
 
         <li>
-          <a href="#" (click)="addZasob()">
+          <a href="#" (click)="addZasob()" class="tooltipped" data-position="bottom" data-tooltip="Dodaj osobę">
             <i class="material-icons">person_add</i>
           </a>
         </li>
         <li>
-          <a href="#" (click)="addProjekt()">
+          <a href="#" (click)="addProjekt()" class="tooltipped" data-position="bottom" data-tooltip="Dodaj zadanie">
             <i class="material-icons">playlist_add_check</i>
           </a>
         </li>
@@ -49,19 +60,23 @@
     <div class="card-content white-text">
       <div class="card-title">Osoby</div>
       <div [dragula]='"bag-one"' [dragulaOptions]="options" class="bag" [dragulaModel]='zadania.zasoby'>
-        <div *ngFor="let item of zadania.zasoby" class="drag-element white-text green lighten-2 z-depth-3">
+        <div *ngFor="let item of zadania.zasoby; let i = index" class="drag-element white-text green lighten-2 z-depth-3">
           <div class="row">
             <div class="col s2 handler" style="cursor: move;">
               :::
             </div>
-            <div class="input-field col s10">
+            <div class="input-field col s2">
+                <i class="fas {{item.ikona}}" (click)="zmienIkone(i)" style="font-size: 1.5em"></i>
+            </div>
+            <div class="input-field col s8">
               <input placeholder="Nazwa osoby" type="text" class="" [(ngModel)]="item.nazwa">
             </div>
           </div>
         </div>
       </div>
       <div class="bag-container-footer color-darker">
-        <a class="btn-floating btn-large waves-effect waves-light green accent-4" (click)="addZasob()">
+        <a class="btn-floating btn-large waves-effect waves-light green accent-4 tooltipped" (click)="addZasob()" data-position="bottom"
+          data-tooltip="Dodaj osobę">
           <i class="material-icons">person_add</i>
         </a>
       </div>
@@ -75,7 +90,7 @@
       </div>
       <div class="row">
         <div [dragula]='"bag-one"' [dragulaOptions]="options" class="bag" [dragulaModel]='bag.osoby'>
-          <div *ngFor="let item of bag.osoby" class="drag-element white-text green lighten-2 z-depth-3" [innerHtml]='item.nazwa'></div>
+          <div *ngFor="let item of bag.osoby" class="drag-element white-text green lighten-2 z-depth-3" ><i class="fas {{item.ikona}}"></i>{{item.nazwa}}</div>
         </div>
       </div>
     </div>
@@ -91,4 +106,12 @@
     </div>
   </div>
 </div>
+
+ <!-- <ul id='dropdown1' class='dropdown-content'>
+   <li><a><i class="fas fa-user-tie"></i></a></li>
+   <li><a><i class="fas fa-male"></i></a></li>
+   <li><a><i class="fas fa-female"></i></a></li>
+ </ul> -->
+
+
 <router-outlet></router-outlet>

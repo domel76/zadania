@@ -1,9 +1,8 @@
 import { Zadania } from './model/zadania';
-import { Component, OnInit } from '@angular/core';
+import { LOCALE_ID, Component, OnInit } from '@angular/core';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
 
 declare var $: any;
-declare var M: any;
 
 @Component({
   selector: 'app-root',
@@ -11,7 +10,7 @@ declare var M: any;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  debug = false;
+  debug = true;
   title = 'app';
   nazwaZasobu;
   zadania = {
@@ -23,23 +22,48 @@ export class AppComponent implements OnInit {
       { 'nazwa': 'Projekt3', 'osoby': [{ 'id': '6', 'nazwa': 'O31' }, { 'id': '9', 'nazwa': 'O32' }, { 'id': '12', 'nazwa': 'O33' }] }
     ]
   };
+  ikony = ['fa-user-tie', 'fa-male', 'fa-female'];
 
   options: any = {
     removeOnSpill: false
   };
 
   ngOnInit() {
-    $(document).ready(function () {
-      $('.datepicker').DatePicker();
-    });
+    this.zadania = {
+      'data': new Date().toISOString().substr(0, 10),
+      'zasoby': [{ 'id': '0', 'ikona': 'fa-male', 'nazwa': '' }],
+      'bags': [{ 'nazwa': '', 'osoby': [] }]
+    };
   }
   addZasob() {
-    this.zadania.zasoby.push({ 'id': '11', 'nazwa': '' });
+    this.zadania.zasoby.push({ 'id': '11', 'ikona': 'fa-male', 'nazwa': '' });
   }
   addProjekt() {
 
     this.zadania.bags.push({ 'nazwa': '', 'osoby': [] });
   }
+  dodajDzien() {
+    const dat = new Date(this.zadania.data);
+    dat.setDate(dat.getDate() + 1);
+    this.zadania.data = dat.toISOString().substr(0, 10);
+  }
+  odejmijDzien() {
+    const dat = new Date(this.zadania.data);
+    dat.setDate(dat.getDate() - 1);
+    this.zadania.data = dat.toISOString().substr(0, 10);
+  }
+  zapiszZadania() {
 
+  }
+  otworzZadania() {
+
+  }
+
+  zmienIkone(i) {
+    const ikonaObecna = this.zadania.zasoby[i].ikona;
+    let ikonaIndex = this.ikony.findIndex(record => record === ikonaObecna);
+    ikonaIndex = (++ikonaIndex >= this.ikony.length) ? 0 : ikonaIndex++;
+    this.zadania.zasoby[i].ikona = this.ikony[ikonaIndex];
+  }
 
 }

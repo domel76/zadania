@@ -30,7 +30,7 @@
   }
   .persons {
     float: right;
-    width: 250px;
+    width: 350px;
   }
   .drag-element {
     cursor: move;
@@ -59,10 +59,10 @@
     min-height: 50px;
   }
   
-  .handler {
+.handler {
     cursor: move;
     padding-top: 0px;
-  }
+}
 .card-title input {
   font-size: 1.5rem;
   font-weight:bold;
@@ -70,9 +70,22 @@
 }
 
 .bag-container-footer {
-
   padding: 1em 0em 0em 0em;
 }
+
+input[type=text]:not(.browser-default).datazadania {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: 'Raleway', 'Arial';
+  width: 280px;
+}
+
+.dzientygodnia {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Raleway', 'Arial';
+}
+
 /*CSS*/
 /*   .container {
     display: grid;
