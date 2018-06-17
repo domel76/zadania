@@ -2,6 +2,7 @@ import { Zadania } from './model/zadania';
 import { LOCALE_ID, Component, OnInit } from '@angular/core';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
 import { HttpClient } from '@angular/common/http';
+import { toast } from 'angular2-materialize';
 
 declare var $: any;
 
@@ -38,6 +39,7 @@ export class AppComponent implements OnInit {
       'zasoby': [{ 'id': '0', 'ikona': 'fa-male', 'nazwa': '' }],
       'bags': [{ 'nazwa': '', 'osoby': [] }]
     };
+    this.otworzZadania();
   }
   addZasob() {
     this.zadania.zasoby.push({ 'id': '11', 'ikona': 'fa-male', 'nazwa': '' });
@@ -61,9 +63,11 @@ export class AppComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          toast('Zapisano dane dla ' + this.zadania.data, 3000);
         },
         err => {
           console.log('Error');
+          toast('Błąd zapisywania danych', 4000);
         }
       );
   }
@@ -71,6 +75,7 @@ export class AppComponent implements OnInit {
     this.http.get('/zadania/zad_get.php?data=' + this.zadania.data).subscribe(data => {
       console.log(data);
       this.zadania = data;
+      toast('Pobrano dane dla ' + this.zadania.data, 3000);
     });
   }
 
