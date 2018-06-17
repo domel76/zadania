@@ -1,6 +1,7 @@
 import { Zadania } from './model/zadania';
 import { LOCALE_ID, Component, OnInit } from '@angular/core';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
+import { HttpClient } from '@angular/common/http';
 
 declare var $: any;
 
@@ -10,10 +11,11 @@ declare var $: any;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  debug = true;
+  debug = false;
   title = 'app';
   nazwaZasobu;
-  zadania = {
+  zadania = null;
+  /* zadania = {
     'data': '2018-06-02',
     'zasoby': [{ 'id': '1', 'nazwa': 'Jurek' }, { 'id': '2', 'nazwa': 'Marek' }, { 'id': '3', 'nazwa': 'Czesiek' }],
     'bags': [
@@ -21,12 +23,14 @@ export class AppComponent implements OnInit {
       { 'nazwa': 'Projekt2', 'osoby': [{ 'id': '5', 'nazwa': 'O21' }, { 'id': '8', 'nazwa': 'O22' }, { 'id': '11', 'nazwa': 'O23' }] },
       { 'nazwa': 'Projekt3', 'osoby': [{ 'id': '6', 'nazwa': 'O31' }, { 'id': '9', 'nazwa': 'O32' }, { 'id': '12', 'nazwa': 'O33' }] }
     ]
-  };
+  }; */
   ikony = ['fa-user-tie', 'fa-male', 'fa-female'];
 
   options: any = {
     removeOnSpill: false
   };
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
     this.zadania = {
@@ -53,10 +57,21 @@ export class AppComponent implements OnInit {
     this.zadania.data = dat.toISOString().substr(0, 10);
   }
   zapiszZadania() {
-
+    const req = this.http.post('/zadania/zad_create.php?data=' + this.zadania.data, this.zadania)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log('Error');
+        }
+      );
   }
   otworzZadania() {
-
+    this.http.get('/zadania/zad_get.php?data=' + this.zadania.data).subscribe(data => {
+      console.log(data);
+      this.zadania = data;
+    });
   }
 
   zmienIkone(i) {

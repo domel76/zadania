@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DragulaModule } from 'ng2-dragula';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MaterializeModule } from 'angular2-materialize';
 
@@ -22,7 +23,8 @@ registerLocaleData(localePl, 'pl');
     AppRoutingModule,
     DragulaModule,
     FormsModule,
-    MaterializeModule
+    MaterializeModule,
+    HttpClientModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pl' }],
   bootstrap: [AppComponent]
