@@ -1,6 +1,6 @@
 <?php
     header('Content-type:application/json;charset=utf-8');
-    require_once('zad_conf.php');
+    require_once('zad_util.php');
     $conn = polacz();
     $data = $_GET['data'];
     if (czy_jest_data($conn, $data)) {

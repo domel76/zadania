@@ -4,6 +4,8 @@
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li>
           <input type="text" [(ngModel)]="zadania.data" class="datazadania" />
+        </li>
+        <li  class="dzientygodniali">
           <span class="dzientygodnia">{{ zadania.data | date:'EEEE':'+2':'pl'}}</span>
         </li>
         <li>

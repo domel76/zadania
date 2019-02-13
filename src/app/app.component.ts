@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
         },
         err => {
           console.log('Error');
-          toast('Błąd zapisywania danych', 4000);
+          toast('Błąd zapisywania danych', 4000, 'red');
         }
       );
   }
@@ -76,8 +76,13 @@ export class AppComponent implements OnInit {
       console.log(data);
       this.zadania = data;
       toast('Pobrano dane dla ' + this.zadania.data, 3000);
-    });
-  }
+    },
+    err => {
+      console.log('Error');
+      toast('Błąd pobierania danych', 4000, 'red');
+    }
+  );
+}
 
   zmienIkone(i) {
     const ikonaObecna = this.zadania.zasoby[i].ikona;

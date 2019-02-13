@@ -21,7 +21,9 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/zadania"
+              "src/zadania/zad_create.php",
+              "src/zadania/zad_util.php",
+              "src/zadania/zad_get.php"
             ],
             "styles": [
               "src/styles.css"
